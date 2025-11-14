@@ -45,6 +45,57 @@
         #binding-cells = <2>;
         tapping-term-ms = <200>;
         flavor = "tap-preferred";
+        quick-tap-ms = <130>;
+    };
+
+    hanis_holdtab_kpkp: hanis_holdtab_kpkp {
+        compatible = "zmk,behavior-hold-tap";
+        label = "HANIS_HOLDTAB_KPKP";
+        bindings = <&kp>, <&kp>;
+
+        #binding-cells = <2>;
+        flavor = "tap-preferred";
+        tapping-term-ms = <200>;
+    };
+
+    hanis_holdtap_mcr0: hanis_holdtap_mcr0 {
+        compatible = "zmk,behavior-hold-tap";
+        label = "HANIS_HOLDTAP_MCR0";
+        bindings = <&M0_double_click>, <&mkp>;
+
+        #binding-cells = <2>;
+        tapping-term-ms = <200>;
+        flavor = "tap-preferred";
+    };
+
+    hanis_holdtap_mcr1: hanis_holdtap_mcr1 {
+        compatible = "zmk,behavior-hold-tap";
+        label = "HANIS_HOLDTAP_MCR1";
+        bindings = <&M1_parentheses>, <&kp>;
+
+        #binding-cells = <2>;
+        tapping-term-ms = <200>;
+        flavor = "tap-preferred";
+    };
+
+    hanis_holdtab_mcr2: hanis_holdtab_mcr2 {
+        compatible = "zmk,behavior-hold-tap";
+        label = "HANIS_HOLDTAB_MCR2";
+        bindings = <&M2_anglebrackets>, <&kp>;
+
+        #binding-cells = <2>;
+        tapping-term-ms = <200>;
+        flavor = "tap-preferred";
+    };
+
+    hanis_holdtab_mcr3: hanis_holdtab_mcr3 {
+        compatible = "zmk,behavior-hold-tap";
+        label = "HANIS_HOLDTAB_MCR3";
+        bindings = <&M3_brackets>, <&kp>;
+
+        #binding-cells = <2>;
+        tapping-term-ms = <200>;
+        flavor = "tap-preferred";
     };
 
     behaviors {
@@ -56,6 +107,20 @@
         softoff {
             bindings = <&soft_off>;
             key-positions = <14 28 40>;
+        };
+
+        kl_hanyoung {
+            bindings = <&hanis_holdtab_kpkp RCTRL RALT>;
+            key-positions = <35 36>;
+            timeout-ms = <50>;
+            layers = <0>;
+        };
+
+        qw_ctrlW {
+            bindings = <&kp LC(W)>;
+            key-positions = <14 15>;
+            timeout-ms = <50>;
+            layers = <0>;
         };
     };
 
@@ -148,17 +213,17 @@
     keymap {
         compatible = "zmk,keymap";
 
-        layer0 {
+        layer_0 {
             bindings = <
-&lt 4 TAB            &kp N1                       &kp N2                     &kp N3                       &kp N4                      &kp N5                       &kp UP_ARROW     &kp N6                     &kp N7                      &kp N8                       &kp N9                     &kp N0                          &kp SEMI
+&lt 4 TAB            &kp N1                       &kp N2                     &kp N3                       &kp N4                      &kp N5                       &kp UP_ARROW     &kp N6                     &kp N7                      &kp N8                       &kp N9                     &hanis_holdtap_mcr1 0 N0        &kp SEMI
 &gresc               &kp Q                        &kp W                      &kp E                        &kp R                       &kp T                        &kp DOWN_ARROW   &kp Y                      &kp U                       &kp I                        &kp O                      &kp BACKSPACE                   &kp APOS
 &lt 3 LS(RIGHT_ALT)  &hanis_homerowmods LSHFT A   &hanis_homerowmods LALT S  &hanis_homerowmods LSHIFT D  &hanis_homerowmods LCTRL F  &hanis_homerowmods LGUI G    &kp LEFT_ARROW   &hanis_homerowmods LGUI H  &hanis_homerowmods LCTRL J  &hanis_homerowmods RSHIFT K  &hanis_homerowmods LALT L  &hanis_homerowmods RSHFT P      &kp DELETE
-&kp LEFT_CONTROL     &hanis_homerowmods LSHIFT Z  &kp X                      &kp C                        &kp V                       &kp B                        &kp RIGHT_ARROW  &kp N                      &kp M                       &kp COMMA                    &kp DOT                    &hanis_homerowmods RSHIFT FSLH  &to 5
+&kp LEFT_CONTROL     &hanis_homerowmods LSHIFT Z  &kp X                      &kp C                        &kp V                       &kp B                        &kp RIGHT_ARROW  &kp N                      &kp M                       &kp COMMA                    &hanis_holdtab_mcr2 0 DOT  &hanis_homerowmods RSHIFT FSLH  &to 5
 &kp C_MUTE           &kp LCTRL                    &kp LEFT_GUI               &kp LEFT_ALT                 &mo 1                       &lt 1 SPACE                  &kp ENTER        &lt 1 SPACE                &kp ENTER                   &mo 2                        &kp RIGHT_SHIFT            &kp DELETE
             >;
 
             sensor-bindings = <&scroll_encoder>;
-            display-name = "LAYER0";
+            display-name = "layer0";
         };
 
         layer_1 {
@@ -189,11 +254,11 @@
 
         layer_3 {
             bindings = <
-&trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans  &trans
+&trans     &kp LA(F4)  &kp F2          &kp LC(A)       &kp LC(C)        &kp LC(V)                    &trans  &kp KP_NUMLOCK                     &kp SLASH        &kp ASTERISK     &kp LEFT_PARENTHESIS  &kp RIGHT_PARENTHESIS  &trans
+&kp ESC    &kp LC(W)   &kp F4          &mmv MOVE_UP    &mkp MB1         &hanis_holdtap_mcr0 0 MB1    &trans  &kp EQUAL                          &kp KP_NUMBER_7  &kp KP_NUMBER_8  &kp KP_NUMBER_9       &kp PERCENT            &trans
+&kp LSHFT  &none       &mmv MOVE_LEFT  &mmv MOVE_DOWN  &mmv MOVE_RIGHT  &msc SCRL_UP                 &trans  &hanis_holdtab_kpkp ASTERISK PLUS  &kp KP_NUMBER_4  &kp KP_NUMBER_5  &kp KP_NUMBER_6       &kp COMMA              &trans
+&trans     &none       &mkp MB4        &mkp MB5        &mkp MB2         &msc SCRL_DOWN               &trans  &hanis_holdtab_kpkp SLASH MINUS    &kp KP_NUMBER_1  &kp KP_NUMBER_2  &kp KP_NUMBER_3       &kp DOT                &trans
+&trans     &trans      &trans          &trans          &kp ENTER        &to 0                        &trans  &kp KP_NUMBER_0                    &trans           &trans           &trans                &trans
             >;
 
             display-name = "layer3";
@@ -214,7 +279,7 @@
         };
 
         layer_5 {
-            display-name = "LAYER0";
+            display-name = "layer5";
             bindings = <
 &kp TAB     &kp N1    &kp N2    &kp N3   &kp N4    &kp N5         &kp UP_ARROW     &kp N6     &kp N7     &kp N8     &kp N9   &kp N0         &kp MINUS
 &kp ESCAPE  &kp Q     &kp W     &kp E    &kp R     &kp T          &kp DOWN_ARROW   &kp Y      &kp U      &kp I      &kp O    &kp BACKSPACE  &kp SEMI
@@ -234,6 +299,8 @@
 &none  &none   &none   &kp Y   &kp H     &kp N      &none  &kp LC(MINUS)  &none     &none     &none      &none     &none
 &none  &none   &none   &none   &kp LALT  &none      &none  &none          &none     &none     &none      &none
             >;
+
+            label = "layer6";
         };
     };
 };
